@@ -1,0 +1,48 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.master.cs" Inherits="Melodyhub2.Site" %>
+
+<!DOCTYPE html>
+
+<html>
+<head runat="server">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<link rel="stylesheet" href="resources/css/styles.css" type="text/css"/>
+    <title>
+        <asp:ContentPlaceHolder ID="title" runat="server">
+            MelodyHub - Gestión de Instrumentos
+        </asp:ContentPlaceHolder>
+    </title>
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <form id="form1" runat="server">
+        <nav class="navbar">
+            <h1>Menú de Navegación</h1>
+            <asp:HyperLink runat="server" hl="Inicio" NavigateUrl="~/Index.aspx" Text="Inicio"></asp:HyperLink>
+            <asp:HyperLink runat="server" hl="Paises" NavigateUrl="~/countries/Countries.aspx" Text="Gestión de Instrumentos"></asp:HyperLink> 
+        </nav>
+        <div class="content">
+            <header class="header">
+                <h2>MelodyHub - Gestión de Instrumentos</h2>
+                <div>
+                    <h3>El usuario  <%=Session["usuario"] %> ingresó</h3>
+                    <asp:Button ID="btnSalir" runat="server" Text="Salir" CssClass="btn-salir" OnClick="btnSalir_Click" OnClientClick="return salirAplicacion();"/>
+                </div>
+            </header>
+            <main class="main-content">
+                <asp:ContentPlaceHolder ID="main" runat="server">
+                </asp:ContentPlaceHolder>
+            </main>
+            <footer class="footer">&copy SENA - Técnico en Programación de Software</footer>
+        </div>
+    </form>
+    <script>
+        function salirAplicacion() {
+            var form = document.getElementById('<%= form1.ClientID %>')
+            form.reset();
+            return true;
+        }
+
+    </script>
+</body>
+</html>
